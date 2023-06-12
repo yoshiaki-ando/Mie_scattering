@@ -15,12 +15,6 @@ namespace AndoLab{
 
 class Mie_scattering{
 private:
-  bool dummy = false;
-  /* レイリー散乱のみ計算するときはMie散乱を使用しない。
-   * ただし、PMCも計算できるプログラムとしている。
-   * そのため、レイリーだけを計算するこきは、
-   * この変数を true にする。
-   */
 
   double pWavelength; /* [m] 波長 */
   double p_a; /* [m] 散乱球の半径 */
@@ -30,25 +24,19 @@ private:
   int pN; /* 級数の項数 */
 public:
   Mie_scattering(void){
-    dummy = true;
-
     /* 以下、全く意味のない値 */
-    p_a = 0.0;
-    p_m = std::complex <double> (0.0, 0.0);
+    p_a = 1.0;
+    p_m = std::complex <double> (1.0, 0.0);
     p_ka = 1.0;
     pWavelength = 1.0;
-    pN = 10;
+    pN = 1;
   };
 
   Mie_scattering(double lambda, double a, std::complex <double> m):
     pWavelength( lambda ), p_a( a ), pN( 20 ){
     p_m = m;
     p_ka = 2.0*M_PI/lambda * p_a;
-    dummy = false;
   }
-
-  bool is_this_dummy(void){ return dummy; }; /* ダミーかどうかの判定 */
-  bool isnt_this_dummy(void){ return !dummy; }; /* ダミーでないかどうかの判定 */
 
   void set(double lambda, double a, std::complex <double> m){
     pWavelength = lambda;
