@@ -48,6 +48,7 @@ public:
   }
 
   bool is_this_dummy(void){ return dummy; }; /* ダミーかどうかの判定 */
+  bool isnt_this_dummy(void){ return !dummy; }; /* ダミーでないかどうかの判定 */
 
   void set(double lambda, double a, std::complex <double> m){
     pWavelength = lambda;
