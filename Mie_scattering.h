@@ -86,8 +86,6 @@ void set_options( /* オプションによるパラメタ設定 */
     std::string &Output_filename
     );
 
-std::complex <double> interpolated_m(double wavelength_in_m);
-
 /* パラメタの出力 */
 void output_param(
     const double Radius_of_sphere_in_m,
