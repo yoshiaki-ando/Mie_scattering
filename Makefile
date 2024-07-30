@@ -8,7 +8,7 @@ INSTALL_LIB_DIR = $(PREFIX)/lib
 INSTALL_INC_DIR = $(PREFIX)/include
 BUILD_LIB = $(TARGET)
 BUILD_OPT = -shared -fPIC
-OPTS = -Wall -O3 -I/home/ando/include -shared -fPIC
+OPTS = -Wall -O3 -I$(PREFIX)/include -shared -fPIC
 
 .PHONY: all install clean
 

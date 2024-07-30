@@ -23,7 +23,8 @@ private:
 
   int pN; /* 級数の項数 */
 public:
-  Mie_scattering(void){
+  /*** コンストラクタ ***/
+  Mie_scattering(void){ /* 空のコンストラクタ */
     /* 以下、全く意味のない値 */
     p_a = 1.0;
     p_m = std::complex <double> (1.0, 0.0);
@@ -32,11 +33,13 @@ public:
     pN = 1;
   };
 
+  /* (2) */
   Mie_scattering(double lambda, double a, std::complex <double> m):
     pWavelength( lambda ), p_a( a ), pN( 20 ){
     p_m = m;
     p_ka = 2.0*M_PI/lambda * p_a;
   }
+
 
   void set(double lambda, double a, std::complex <double> m){
     pWavelength = lambda;
@@ -58,12 +61,12 @@ public:
 
   /* 散乱断面積(無偏光) σ(θ) = λ^2 / (4π^2) * (i1 + i2)/2 */
   double scs(double th);
-  double scs(double a, double th);
+  double scs(double a, double th); /* [m] 散乱球の半径 */
 
   /* 全散乱断面積(無偏光、損失あり) */
   double scs_t(void);
   double scs_t(
-      double a /* [m] 散乱級の半径 */
+      double a /* [m] 散乱球の半径 */
       );
 };
 
